@@ -10,16 +10,12 @@ factors n = filter (\x -> x `isFactor` n) (takeWhile (<= n ) [1..])
 isPrime :: Int -> Bool
 isPrime n = (length (factors n)) == 2
 
-smallestPrimeFactor :: Int -> Maybe Int
-smallestPrimeFactor 1 = Nothing
-smallestPrimeFactor n = find (\x -> (x `isFactor` n) && (isPrime x)) [2..n]
+smallestPrimeFactor :: Int -> Int
+smallestPrimeFactor n = fromJust $ find (\x -> (x `isFactor` n) && (isPrime x)) [2..n]
 
 primeFactors :: Int -> [Int]
 primeFactors 1 = []
-primeFactors n = do
-    let factor = smallestPrimeFactor n
-    if factor == Nothing
-    then []
-    else (fromJust factor):(primeFactors (n `quot` (fromJust factor)))
+primeFactors n = factor:(primeFactors (n `quot` factor))
+        where factor = smallestPrimeFactor n
 
 main = print $ maximum $ primeFactors 600851475143
