@@ -1,5 +1,5 @@
 multiplesOf3Or5 :: [Int]
-multiplesOf3Or5 = filter (\x -> x `rem` 3 == 0 || x `rem` 5 == 0) [1..] 
+multiplesOf3Or5 = filter (\x -> x `rem` 3 == 0 || x `rem` 5 == 0) [1..]
 
 below :: Int -> [Int] -> [Int]
 below maximum list = takeWhile (< maximum) list
