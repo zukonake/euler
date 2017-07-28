@@ -5,7 +5,7 @@ isFactorOf :: Int -> Int -> Bool
 isFactorOf x y = (y `mod` x) == 0
 
 factors :: Int -> [Int]
-factors n = filter (\x -> x `isFactor` n) (takeWhile (<= n ) [1..])
+factors n = filter (\x -> x `isFactorOf` n) (takeWhile (<= n ) [1..])
 
 isPrime :: Int -> Bool
 isPrime n = (length (factors n)) == 2
