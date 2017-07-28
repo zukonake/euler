@@ -10,4 +10,4 @@ isPrime n = (length (factors n)) == 2
 primeFactors :: Int -> [Int]
 primeFactors n = filter (\x -> isPrime x ) (factors n)
 
-main = print $ primeFactors 600851475143
+main = print $ maximum $ primeFactors 600851475143
